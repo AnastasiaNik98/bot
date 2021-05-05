@@ -1,5 +1,6 @@
-import telebot
-bot=telebot.TeleBot(config.TOKEN)
+import os
+
+
 joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
