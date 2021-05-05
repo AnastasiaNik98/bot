@@ -1,6 +1,3 @@
-import telebot
-bot=telebot.TeleBot(config.TOKEN)
-
 joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
@@ -17,5 +14,5 @@ def startJoin(message):
 @bot.message_handler(commands=['special'])
 def mess(message):
   for user in joinedUsers:
-    bot.send_message(user, message.text[message.text.find(' '):])
+    update.send_message(user, message.text[message.text.find(' '):])
                      
