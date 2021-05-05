@@ -79,5 +79,4 @@ def setup_dispatcher(dp):
 
 text_handler = MessageHandler(Filters.text, echo)
 dp.add_handler(text_handler)
-updater.start_polling()
-updater.idle()
+
