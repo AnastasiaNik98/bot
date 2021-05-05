@@ -17,7 +17,7 @@ def startJoin(message):
     
 def mess(message):
   for user in joinedUsers:
-    update.send_message(user, message.text[message.text.find(' '):])
+    bot.send_message(user, message.text[message.text.find(' '):])
 
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
