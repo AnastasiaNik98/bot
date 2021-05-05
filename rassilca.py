@@ -1,5 +1,5 @@
-import os
-
+import telebot
+bot=telebot.TeleBot(config.TOKEN)
 
 joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
