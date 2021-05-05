@@ -1,17 +1,8 @@
 import os
-import telebot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 from rassilca import *
-
-bot=telebot.TeleBot(config.TOKEN)
-
-joinedFile = open("/joined.txt", "r")
-joinedUsers = set()
-for line in joinedFile:
-  joinedUsers.add(line.strip())
-joinedFile.close()
 
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
