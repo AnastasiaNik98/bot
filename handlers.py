@@ -1,6 +1,6 @@
 import os
-from telegram.ext import CommandHandler, MessageHandler, Filters
-
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
@@ -14,8 +14,39 @@ def start(update, context):
 📞 Connected {user_info}.
         """,
     )
+def address(bot, update):
+    update.message.reply_text('Адрес: Китай, Гималаи, хребет Махалангур-Химал, вершина Эверест, д. 1')
 
+def phone(bot, update):
+    update.message.reply_text('Телефон: +86 133 2686 8519')
 
+def site(bot, update):
+    update.message.reply_text('Сайт: https://yandex.ru/everest/')
+
+def work_time(bot, update):
+    update.message.reply_text('Время работы: пн-пт, 9-00 - 19-00')
+     
+updater = Updater('1762463785:AAFI3izl6olPpzdvmqPj8X5CnxyjFKpVmjI')
+dp = updater.dispatcher
+
+reply_keyboard = [['/address', '/phone'],
+                  ['/site', '/work_time']]
+
+markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+
+dp.add_handler(CommandHandler('start', start))
+
+dp.add_handler(CommandHandler('close', close_keyboard))
+
+dp.add_handler(CommandHandler('address', address))
+dp.add_handler(CommandHandler('phone', phone))
+dp.add_handler(CommandHandler('site', site))
+dp.add_handler(CommandHandler('work_time', work_time))
+dp.add_handler(text_handler)
+
+updater.start_polling()
+
+updater.idle()
 def forward_to_chat(update, context):
     """{ 
         'message_id': 5, 
