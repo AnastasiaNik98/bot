@@ -21,7 +21,7 @@ def why(update, context):
     update.message.reply_text('Спрашивайте, мы ответим через минуту')
 
 def catalog(update, context):
-    update.message.reply_text('Наши услуги:')
+    update.message.reply_text('Наши услуги: /n Seo-продвижение сайтов /n Управление репутацией в интернете /n Создание сайтов')
 
 def help(update, context):
     update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
