@@ -17,14 +17,14 @@ def start(update, context):
 def about(update, context):
     update.message.reply_text('С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России, странах СНГ, США и Европе. При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем и тенденции развития интернет-маркетинга.')
 
-def phone(update, context):
-    update.message.reply_text('Телефон: +86 133 2686 8519')
+def why(update, context):
+    update.message.reply_text('Спрашивайте, мы ответим через минуту')
 
-def site(update, context):
-    update.message.reply_text('Сайт: https://yandex.ru/everest/')
+def catalog(update, context):
+    update.message.reply_text('Наши услуги:')
 
-def work_time(update, context):
-    update.message.reply_text('Время работы: пн-пт, 9-00 - 19-00')
+def help(update, context):
+    update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
 
 reply_keyboard = [['/address', '/phone'],
                   ['/site', '/work_time']]
@@ -70,9 +70,9 @@ def forward_to_user(update, context):
 def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('about', about))
-    dp.add_handler(CommandHandler('phone', phone))
-    dp.add_handler(CommandHandler('site', site))
-    dp.add_handler(CommandHandler('work_time', work_time))
+    dp.add_handler(CommandHandler('why', why))
+    dp.add_handler(CommandHandler('catalog', catalog))
+    dp.add_handler(CommandHandler('help', help))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
