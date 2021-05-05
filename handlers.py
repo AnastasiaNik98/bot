@@ -70,11 +70,10 @@ def forward_to_user(update, context):
 def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('address', address))
-dp.add_handler(CommandHandler('phone', phone))
-dp.add_handler(CommandHandler('site', site))
-dp.add_handler(CommandHandler('work_time', work_time))
+    dp.add_handler(CommandHandler('phone', phone))
+    dp.add_handler(CommandHandler('site', site))
+    dp.add_handler(CommandHandler('work_time', work_time))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
-    dp.add_handler(text_handler)
     return dp
 
