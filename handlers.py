@@ -77,3 +77,7 @@ def setup_dispatcher(dp):
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
 
+text_handler = MessageHandler(Filters.text, echo)
+dp.add_handler(text_handler)
+updater.start_polling()
+updater.idle()
