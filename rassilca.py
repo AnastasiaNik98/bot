@@ -1,4 +1,6 @@
-joinedFile = open('/joined.txt', "r")
+import telebot
+bot=telebot.TeleBot(config.TOKEN)
+joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
   joinedUsers.add(line.strip())
