@@ -3,6 +3,12 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
+import telebot
+
+#r = bot.send_message(channel, "Lorem ipsum")
+r = update.send_message(update, "https://cont.ws/@shurshur/1628591")
+print (r.message_id)
+
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
 
