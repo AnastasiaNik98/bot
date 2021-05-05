@@ -1,5 +1,5 @@
 import os
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
@@ -25,28 +25,15 @@ def site(bot, update):
 
 def work_time(bot, update):
     update.message.reply_text('Время работы: пн-пт, 9-00 - 19-00')
-     
-updater = Updater('1762463785:AAFI3izl6olPpzdvmqPj8X5CnxyjFKpVmjI')
-dp = updater.dispatcher
 
 reply_keyboard = [['/address', '/phone'],
                   ['/site', '/work_time']]
 
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-
-dp.add_handler(CommandHandler('start', start))
-
-dp.add_handler(CommandHandler('close', close_keyboard))
-
-dp.add_handler(CommandHandler('address', address))
-dp.add_handler(CommandHandler('phone', phone))
-dp.add_handler(CommandHandler('site', site))
-dp.add_handler(CommandHandler('work_time', work_time))
 dp.add_handler(text_handler)
-
 updater.start_polling()
-
 updater.idle()
+
 def forward_to_chat(update, context):
     """{ 
         'message_id': 5, 
@@ -85,6 +72,10 @@ def forward_to_user(update, context):
 
 def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('address', address))
+dp.add_handler(CommandHandler('phone', phone))
+dp.add_handler(CommandHandler('site', site))
+dp.add_handler(CommandHandler('work_time', work_time))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
