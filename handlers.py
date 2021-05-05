@@ -78,5 +78,5 @@ def setup_dispatcher(dp):
     return dp
 
 text_handler = MessageHandler(Filters.text, echo)
-dp.add_handler(text_handler)
+
 
