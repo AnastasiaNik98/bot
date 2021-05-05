@@ -21,9 +21,8 @@ def why(update, context):
     update.message.reply_text('Спрашивайте, мы ответим через минуту')
 
 def catalog(update, context):
-    update.message.reply_text('Наши услуги: \n 😏 Seo-продвижение сайтов', seo, '\n 😁 Управление репутацией в интернете \n 😉 Создание сайтов\n ☺️ E-mail маркетинг \n 😋 Конкурентная разведка \n 😎 Техническая поддержка сайтов')
-def seo(update, context):
-    update.message.reply_text('seo')
+    update.message.reply_text('Наши услуги: \n 😏 Seo-продвижение сайтов \n 😁 Управление репутацией в интернете \n 😉 Создание сайтов\n ☺️ E-mail маркетинг \n 😋 Конкурентная разведка \n 😎 Техническая поддержка сайтов \n \n Если хотите узнать подробнее, напишите нам, и мы подберем предложение идивидуально для Вас!')
+
 def help(update, context):
     update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
 
@@ -74,7 +73,6 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
     dp.add_handler(CommandHandler('help', help))
-     dp.add_handler(CommandHandler('seo', seo))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
