@@ -30,8 +30,6 @@ reply_keyboard = [['/address', '/phone'],
                   ['/site', '/work_time']]
 
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-updater.start_polling()
-updater.idle()
 
 def forward_to_chat(update, context):
     """{ 
