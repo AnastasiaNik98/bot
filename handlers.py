@@ -31,8 +31,7 @@ def catalog(update, context):
 def help(update, context):
     update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
 
-reply_keyboard = [['/address', '/phone'],
-                  ['/site', '/work_time']]
+reply_keyboard = [['/address', '/phone'],['/site', '/work_time']]
 
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
 
