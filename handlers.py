@@ -4,7 +4,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 from telebot import types
 
-def start(update, context):
+def info(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
     user_info = update.message.from_user.to_dict()
@@ -100,7 +100,7 @@ def forward_to_user(update, context):
 
 
 def setup_dispatcher(dp):
-    dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('info', info))
     dp.add_handler(CommandHandler('about', about))
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
