@@ -3,7 +3,7 @@ import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 from telebot import types
-
+bot = telebot.TeleBot(TELEGRAM_TOKEN)
 def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
@@ -15,7 +15,7 @@ def start(update, context):
         
 📞 Connected {user_info}.
         """,
-    reply_markup=keyboard()
+reply_markup=keyboard()
     )
       
 def keyboard():
