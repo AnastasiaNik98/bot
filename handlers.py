@@ -1,6 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
@@ -17,7 +17,7 @@ def start(update, context):
         """,
     )
     
- def close_keyboard(bot, update):
+ def close_keyboard(update, context):
     update.message.reply_text('Ok', reply_markup=ReplyKeyboardRemove())    
     
 def about(update, context):
