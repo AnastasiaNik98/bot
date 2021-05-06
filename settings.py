@@ -19,6 +19,4 @@ TELEGRAM_SUPPORT_CHAT_ID = int(TELEGRAM_SUPPORT_CHAT_ID)
 
 WELCOME_MESSAGE = os.getenv("WELCOME_MESSAGE", "👋")
 
-reply_keyboard = [['/address', '/phone'],
-                  ['/site', '/work_time']]
-reply_markup=markup
+
