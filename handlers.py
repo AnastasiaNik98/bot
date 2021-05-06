@@ -1,10 +1,9 @@
 import os
-import telebot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
-from telebot import types
-bot = telebot.TeleBot(config.token)
-def info(update, context):
+
+
+def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
     user_info = update.message.from_user.to_dict()
@@ -18,36 +17,6 @@ def info(update, context):
     )
       
 
-
-
-@bot.message_handler(commands=["start"])
-def start(m):
-    msg = bot.send_message(m.chat.id, "Вас приветствует Бот")
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(*[types.KeyboardButton(name) for name in ['О компании', 'Прайс-лист']])
-    keyboard.add(*[types.KeyboardButton(name) for name in ['Акции', 'Контакты']])
-    bot.send_message(m.chat.id, 'Выберите в меню что вам интересно!',
-        reply_markup=keyboard)
-    bot.register_next_step_handler(msg, name)
-
-def name(m):
-    if m.text == 'О компании':
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Сертификаты']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['В начало']])
-        bot.send_message(m.chat.id, 'инфа о компании',
-            reply_markup=keyboard)
-    elif m.text == 'Прайс-лист':
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Общий', 'Одиночный']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['В начало']])
-        bot.send_message(m.chat.id, 'Выберите прайс который нужен.',
-            reply_markup=keyboard)
-    elif m.text == 'Акции':
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['В начало']])
-        bot.send_message(m.chat.id, 'Сожалею, но в данный момент акций нет(',
-            reply_markup=keyboard)
     
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
@@ -100,7 +69,7 @@ def forward_to_user(update, context):
 
 
 def setup_dispatcher(dp):
-    dp.add_handler(CommandHandler('info', info))
+    dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('about', about))
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
