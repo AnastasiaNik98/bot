@@ -1,7 +1,8 @@
+import telebot
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-
+from telebot import types
 
 def start(update, context):
     
@@ -9,17 +10,17 @@ def start(update, context):
     user_info = update.message.from_user.to_dict()
 
     context.bot.send_message(
-        reply_markup=keyboard(),
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
         
 📞 Connected {user_info}.
         """,
+    reply_markup=keyboard()
     )
       
 def keyboard():
-	markup = update.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-	btn1 = update.KeyboardButton('📖 Баланс')
+	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+	btn1 = types.KeyboardButton('📖 Баланс')
 	markup.add(btn1)
 	return markup 
     
