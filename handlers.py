@@ -3,8 +3,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, WELCOME_MESSAGE2, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
-    update.message.reply_text(WELCOME_MESSAGE)
-update.message.reply_text(WELCOME_MESSAGE2)
+    update.message.reply_text(WELCOME_MESSAGE, WELCOME_MESSAGE2)
     user_info = update.message.from_user.to_dict()
 
     context.bot.send_message(
