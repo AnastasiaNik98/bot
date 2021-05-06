@@ -1,5 +1,5 @@
 import os
-import telebot
+import bot
 joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
@@ -15,4 +15,4 @@ for line in joinedFile:
 @bot.message_handler(commands=['special'])
 def mess(message):
   for user in joinedUsers:
-    bot.send_message(user, message.text[message.text.find(' '):])
+    update.send_message(user, message.text[message.text.find(' '):])
