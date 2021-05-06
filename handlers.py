@@ -9,7 +9,7 @@ def start(update, context):
     user_info = update.message.from_user.to_dict()
 
     context.bot.send_message(
-        reply_markup=keyboard()
+        reply_markup=keyboard(),
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
         
