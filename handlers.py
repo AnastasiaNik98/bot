@@ -1,6 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
+from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, markup
 
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE, markup)
@@ -27,10 +27,7 @@ def catalog(update, context):
 def help(update, context):
     update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
 
-reply_keyboard = [['/address', '/phone'],
-                  ['/site', '/work_time']]
 
-markup = reply_keyboard
 
 def forward_to_chat(update, context):
     """{ 
