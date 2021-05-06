@@ -3,7 +3,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
-
+<script src="https://gist.github.com/informlic/75e9a0979c5781f2bcb9ef551c052178.js"></script>
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
 
