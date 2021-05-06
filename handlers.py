@@ -1,7 +1,7 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-
-from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID,reply_keyboard, reply_markup
 
 
 def start(update, context):
@@ -30,8 +30,6 @@ def catalog(update, context):
 
 def help(update, context):
     update.message.reply_text('Мне жаль, что мы доставили Вам неудобство. Опишите ситуацию и мы обязательно все исправим')
-
-reply_keyboard = [['/address', '/phone'],['/site', '/work_time']]
 
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
 
