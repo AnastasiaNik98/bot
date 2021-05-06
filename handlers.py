@@ -4,9 +4,7 @@ from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
-    update.message.reply_text('Привет! Я информационный бот компании "Путешествия и туризм".\n'
-                              'Для получения информации можете воспользоваться подсказками ниже!',
-                              reply_markup=markup)
+    update.message.reply_text(WELCOME_MESSAGE)
 
     user_info = update.message.from_user.to_dict()
 
