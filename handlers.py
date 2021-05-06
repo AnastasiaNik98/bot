@@ -20,7 +20,6 @@ def start(update, context):
 	
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):    
-    chat_id = message.chat.id
     if message.text == 'Баланс':
         text = '✅ Ваш баланс \n\n'
         context.bot.send_message(chat_id, text,reply_markup=keyboard())
