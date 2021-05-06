@@ -23,7 +23,7 @@ def send_anytext(message):
     chat_id = message.chat.id
     if message.text == 'Баланс':
         text = '✅ Ваш баланс \n\n'
-        bot.send_message(chat_id, text,reply_markup=keyboard())
+        context.bot.send_message(chat_id, text,reply_markup=keyboard())
   
 def keyboard():
 	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
