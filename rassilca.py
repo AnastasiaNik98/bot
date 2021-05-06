@@ -8,10 +8,10 @@ for line in joinedFile:
   
 @bot.message_handler(commands=['start'])
   def startJoin(message):
-    if not str(message.chat.id) in joinedUsers:
+    if not str(chat_id) in joinedUsers:
       joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "a")
-      joinedFile.write(str(message.chat.id)+"\n")
-      joinedUsers.add(message.chat.id)
+      joinedFile.write(str(chat_id)+"\n")
+      joinedUsers.add(chat_id)
 @bot.message_handler(commands=['special'])
 def mess(message):
   for user in joinedUsers:
