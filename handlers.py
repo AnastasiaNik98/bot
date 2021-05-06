@@ -3,21 +3,6 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
-joinedFile = open("joined.txt", "r")
-joinedUsers = set()
-for line in joinedFile:
-  joinedUsers.add(line.strip())
-joinedFile.close()
-
-def startJoin(message):
-  if not str(message.chat.id) in joinedUsers:
-    joinedFile=open("joined.txt", "a")
-    joinedFile.write(str(message.chat.id) + "\n")
-    joinedUsers.add(message.chat.id)
-    
-def mess(message):
-  for user in joinedUsers:
-    update.send_message(user, message.text[message.text.find(' '):])
 
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
@@ -88,9 +73,6 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('about', about))
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
-    dp.add_handler(CommandHandler('help', help))
-    dp.add_handler(CommandHandler('mess', mess))
-    dp.add_handler(CommandHandler('startJoin', startJoin))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
