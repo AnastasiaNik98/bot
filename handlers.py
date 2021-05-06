@@ -1,6 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
+from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 
 
 def start(update, context):
@@ -9,6 +9,7 @@ def start(update, context):
     user_info = update.message.from_user.to_dict()
 
     context.bot.send_message(
+        reply_markup=keyboard()
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
         
@@ -16,7 +17,11 @@ def start(update, context):
         """,
     )
       
-
+def keyboard():
+	markup = update.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+	btn1 = update.KeyboardButton('📖 Баланс')
+	markup.add(btn1)
+	return markup 
     
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
