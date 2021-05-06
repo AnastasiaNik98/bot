@@ -1,4 +1,5 @@
 import os
+
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 from rassilca import *
@@ -15,6 +16,23 @@ def start(update, context):
         """,
     )
     
+joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "r")
+joinedUsers = set()
+for line in joinedFile:
+  joinedUsers.add(line.strip())
+  joinedFile.close()
+  
+@bot.message_handler(commands=['start'])
+  def startJoin(message):
+    if not str(message.chat.id) in joinedUsers:
+      joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "a")
+      joinedFile.write(str(message.chat.id)+"\n")
+      joinedUsers.add(message.chat.id)
+@bot.message_handler(commands=['special'])
+def mess(message):
+  for user in joinedUsers:
+    update.send_message(user, message.text[message.text.find(' '):])
+
     
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
