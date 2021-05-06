@@ -73,6 +73,7 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('about', about))
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
+    dp.add_handler(CommandHandler('help', help))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
