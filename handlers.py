@@ -4,19 +4,16 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 from telebot import types
 
-def start(update, context):
-    
-    update.message.reply_text(WELCOME_MESSAGE)
-    user_info = update.message.from_user.to_dict()
+bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-    bot.send_message(
-	     reply_markup=keyboard(),
-        chat_id=TELEGRAM_SUPPORT_CHAT_ID,
-        text=f"""
-        
-📞 Connected {user_info}.
-        """,
-    )
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+	bot.send_message(
+		message.chat.id,
+		'''Добро пожаловать. ✌
+		''',
+		reply_markup=keyboard())
+
   
 def keyboard():
 	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
