@@ -1,8 +1,6 @@
-import telebot
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-from telebot import types
 
 def start(update, context):
     
