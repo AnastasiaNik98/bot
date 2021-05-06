@@ -21,5 +21,5 @@ WELCOME_MESSAGE = os.getenv("WELCOME_MESSAGE", "👋")
 reply_keyboard = [['/address', '/phone'],
                   ['/site', '/work_time']]
 
-markup = reply_keyboard
+MARKUP = os.getenv("MARKUP", reply_keyboard)
 
