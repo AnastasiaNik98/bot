@@ -1,6 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, markup
+from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, MARKUP
 
 def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE, MARKUP)
