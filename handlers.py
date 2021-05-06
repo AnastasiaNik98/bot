@@ -1,10 +1,9 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
-    update.message.reply_text(WELCOME_MESSAGE)
+    update.message.reply_text(WELCOME_MESSAGE, reply_markup=markup)
 
     user_info = update.message.from_user.to_dict()
 
@@ -15,8 +14,6 @@ def start(update, context):
         """,
     )
     
- def close_keyboard(update, context):
-    update.message.reply_text('Ok', reply_markup=ReplyKeyboardRemove())    
     
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
@@ -32,7 +29,8 @@ def help(update, context):
 
 reply_keyboard = [['/address', '/phone'],
                   ['/site', '/work_time']]
-markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+
+markup = reply_keyboard
 
 def forward_to_chat(update, context):
     """{ 
@@ -75,7 +73,6 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('about', about))
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
-    dp.add_handler(CommandHandler('close', close_keyboard))
     dp.add_handler(CommandHandler('help', help))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
