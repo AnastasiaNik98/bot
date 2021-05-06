@@ -16,10 +16,10 @@ def start(update, context):
         """,
     )
       
-def keyboard(update, context):
+def keyboard():
 	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
 	btn1 = types.KeyboardButton('📖 Баланс')
-	markup.add(btn1)
+	markup.add(about)
 	return markup 
     
 def about(update, context):
