@@ -1,6 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from handlers import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID
 
 def start(update, context):
