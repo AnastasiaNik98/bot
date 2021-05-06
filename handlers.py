@@ -9,7 +9,7 @@ def start(update, context):
     update.message.reply_text(WELCOME_MESSAGE)
     user_info = update.message.from_user.to_dict()
 
-    context.bot.send_message(
+    bot.send_message(
 	     reply_markup=keyboard(),
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
@@ -17,12 +17,6 @@ def start(update, context):
 📞 Connected {user_info}.
         """,
     )
-	
-@bot.message_handler(content_types=["text"])
-def send_anytext(message):    
-    if message.text == 'Баланс':
-        text = '✅ Ваш баланс \n\n'
-        update.send_message(chat_id, text,reply_markup=keyboard())
   
 def keyboard():
 	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
