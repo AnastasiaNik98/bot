@@ -3,7 +3,7 @@ import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 from telebot import types
-bot = telebot.TeleBot(TELEGRAM_TOKEN)
+
 def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
@@ -18,7 +18,7 @@ def start(update, context):
         """,
     )
       
-def keyboard():
+def keyboard(update, context):
 	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
 	btn1 = types.KeyboardButton('📖 Баланс')
 	markup.add(btn1)
