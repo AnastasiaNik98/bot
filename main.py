@@ -1,9 +1,6 @@
 from telegram.ext import Updater
-import telebot
-from telebot import types
 from handlers import setup_dispatcher
-from settings import TELEGRAM_TOKEN, HEROKU_APP_NAME, PORT, TELEGRAM_SUPPORT_CHAT_ID
-from rassilca import *
+from settings import TELEGRAM_TOKEN, HEROKU_APP_NAME, PORT
 
 # Setup bot handlers
 updater = Updater(TELEGRAM_TOKEN)
