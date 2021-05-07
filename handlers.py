@@ -1,15 +1,14 @@
 import os
-import telebot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-from telebot import types
+
 
 def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
     user_info = update.message.from_user.to_dict()
 
-    bot.send_message(
+    context.bot.send_message(
 	     reply_markup=keyboard(),
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
@@ -19,8 +18,8 @@ def start(update, context):
     )
   
 def keyboard():
-	markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-	btn1 = types.KeyboardButton('Баланс')
+	markup = context.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+	btn1 = context.KeyboardButton('Баланс')
 	markup.add(btn1)
 	return markup 
     
