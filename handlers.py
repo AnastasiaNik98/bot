@@ -1,7 +1,6 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def start(update, context):
     
@@ -10,7 +9,8 @@ def start(update, context):
 
     context.bot.send_message(
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
-        text=f"""
+        text=f""",
+        reply_markup=reply_markup
         
 📞 Новый пользователь начал диалог с Ботом {user_info}.
         """,
@@ -33,8 +33,7 @@ button_list = [
 
 # сборка клавиатуры из кнопок `InlineKeyboardButton`
 reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
-# отправка клавиатуры в чат
- context.bot.send_message(chat_id=chat_id, text="Меню из двух столбцов", reply_markup=reply_markup)  
+
 
 
 def about(update, context):
