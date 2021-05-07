@@ -2,7 +2,7 @@ import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 
-joinedFile = open("/joined.txt", "r")
+joinedFile = open("joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
   joinedUsers.add(line.strip())
@@ -14,7 +14,7 @@ def start(update, context):
     user_info = update.message.from_user.to_dict()
 
     if not str(message.chat.id) in joinedUsers:
-      joinedFile = open("/joined.txt", "a")
+      joinedFile = open("joined.txt", "a")
       joinedFile.write(str(message.chat.id)+"\n")
       joinedUsers.add(message.chat.id)
     
