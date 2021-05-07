@@ -56,7 +56,9 @@ def forward_to_user(update, context):
         chat_id=user_id,
         from_chat_id=update.message.chat_id
     )
-
+def mess(update, context):
+  for user in joinedUsers:
+     context.bot.send_message(user, message.text[message.text.find(' '):])
 
 def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('start', start))
@@ -64,14 +66,12 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('why', why))
     dp.add_handler(CommandHandler('catalog', catalog))
     dp.add_handler(CommandHandler('help', help))
+    dp.add_handler(CommandHandler('mess', mess))
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
 
-@bot.message_handler(commands=['info'])
-def mess(message):
-  for user in joinedUsers:
-    update.send_message(user, message.text[message.text.find(' '):])
+ 
                    
 
 
