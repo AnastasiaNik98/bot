@@ -1,8 +1,6 @@
 import os
-import telobot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-from telebot import types
 
 def start(update, context):
     
@@ -19,10 +17,10 @@ def start(update, context):
 
 @bot.message_handler(commands=["start"])
 def start(m):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(*[types.KeyboardButton(name) for name in ['О нас', 'Прайс-лист']])
-    keyboard.add(*[types.KeyboardButton(name) for name in ['Акции', 'Контакты']])
-    bot.send_message(m.chat.id, '123',
+    keyboard = update.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(*[update.KeyboardButton(name) for name in ['О нас', 'Прайс-лист']])
+    keyboard.add(*[update.KeyboardButton(name) for name in ['Акции', 'Контакты']])
+    context.bot.send_message(m.chat.id, '123',
         reply_markup=keyboard)
     
 def about(update, context):
