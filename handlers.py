@@ -29,7 +29,7 @@ def help(update, context):
     
     
 def sale(update, context):
-    update.message.reply_text('Все акции есть в нашем Инстаграмме \n https://www.instagram.com/robinbobinkurs/?hl=ru \n\n НО для тебя есть специальная акция, напиши нам и узнаешь😏')
+    update.message.reply_text('Все акции есть в нашем Instagram: \n https://www.instagram.com/robinbobinkurs/?hl=ru \n\n 🚨 Но для тебя есть специальная акция, напиши нам кодовые слова "Я Ваш" и узнаешь😏')
 
 def forward_to_chat(update, context):
    
