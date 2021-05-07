@@ -2,12 +2,6 @@ import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
 
-#joinedFile = open("joined.txt", "r")
-#joinedUsers = set()
-#for line in joinedFile:
-#  joinedUsers.add(line.strip())
-#  joinedFile.close()
-
 def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
@@ -25,7 +19,12 @@ def start(update, context):
 📞 Новый пользователь начал диалог с Ботом {user_info}.
         """,
     )
-
+joinedFile = open('joined.txt', 'r')
+joinedUsers = set()
+for line in joinedFile:
+joinedUsers.add(line.strip())
+joinedFile.write(str(chat_id)+"\n")
+joinedFile.close()
 
 
 def about(update, context):
