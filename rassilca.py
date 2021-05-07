@@ -1,7 +1,5 @@
 
-import telebot
-from telegram.ext import Updater
-updater = Updater(TELEGRAM_TOKEN)
+
 joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
