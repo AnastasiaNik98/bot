@@ -20,7 +20,7 @@ def start(m):
     keyboard = update.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*[update.KeyboardButton(name) for name in ['О нас', 'Прайс-лист']])
     keyboard.add(*[update.KeyboardButton(name) for name in ['Акции', 'Контакты']])
-    context.bot.send_message(m.chat.id, '123',
+    context.bot.send_message(m.chat_id, '123',
         reply_markup=keyboard)
     
 def about(update, context):
