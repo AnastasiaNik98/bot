@@ -1,12 +1,24 @@
 import os
+import telebot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
+
+joinedFile = open("/joined.txt", "r")
+joinedUsers = set()
+for line in joinedFile:
+  joinedUsers.add(line.strip())
+  joinedFile.close()
 
 def start(update, context):
     
     update.message.reply_text(WELCOME_MESSAGE)
     user_info = update.message.from_user.to_dict()
 
+    if not str(message.chat.id) in joinedUsers:
+      joinedFile = open("/joined.txt", "a")
+      joinedFile.write(str(message.chat.id)+"\n")
+      joinedUsers.add(message.chat.id)
+    
     context.bot.send_message(
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f""",
@@ -57,7 +69,10 @@ def setup_dispatcher(dp):
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
 
-
+@bot.message_handler(commands=['info'])
+def mess(message):
+  for user in joinedUsers:
+    update.send_message(user, message.text[message.text.find(' '):])
                    
 
 
