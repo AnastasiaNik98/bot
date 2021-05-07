@@ -31,11 +31,6 @@ def help(update, context):
 def sale(update, context):
     update.message.reply_text('Все акции есть в нашем Инстаграмме \n https://www.instagram.com/robinbobinkurs/?hl=ru \n\n НО для тебя есть специальная акция, напиши нам и узнаешь😏')
 
-def socialnetworks(update, context):
-    update.message.reply_text('https://www.instagram.com/robinbobinkurs/?hl=ru')
-
-
-
 def forward_to_chat(update, context):
    
     update.message.forward(chat_id=TELEGRAM_SUPPORT_CHAT_ID)
@@ -58,8 +53,7 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('help', help))
     
     dp.add_handler(CommandHandler('sale', sale))
-    dp.add_handler(CommandHandler('socialnetworks', socialnetworks))
-            
+   
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
