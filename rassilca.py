@@ -1,5 +1,5 @@
 
-joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "r")
+joinedFile = open("/joined.txt", "r")
 joinedUsers = set()
 for line in joinedFile:
   joinedUsers.add(line.strip())
@@ -8,7 +8,7 @@ for line in joinedFile:
 
   def startJoin(message):
     if not str(chat_id) in joinedUsers:
-      joinedFile = open("https://github.com/AnastasiaNik98/bot/blob/main/joined.txt", "a")
+      joinedFile = open("/joined.txt", "a")
       joinedFile.write(str(chat_id)+"\n")
       joinedUsers.add(chat_id)
 
