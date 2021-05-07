@@ -1,6 +1,7 @@
 import os
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def start(update, context):
     
@@ -15,7 +16,27 @@ def start(update, context):
         """,
     )
 
-    
+  def build_menu(buttons, n_cols,
+               header_buttons=None,
+               footer_buttons=None):
+    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+    if header_buttons:
+        menu.insert(0, [header_buttons])
+    if footer_buttons:
+        menu.append([footer_buttons])
+    return menu
+button_list = [
+    InlineKeyboardButton("col1", callback_data=...),
+    InlineKeyboardButton("col2", callback_data=...),
+    InlineKeyboardButton("row 2", callback_data=...)
+]
+
+# сборка клавиатуры из кнопок `InlineKeyboardButton`
+reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
+# отправка клавиатуры в чат
+ context.bot.send_message(chat_id=chat_id, text="Меню из двух столбцов", reply_markup=reply_markup)  
+
+
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
 
