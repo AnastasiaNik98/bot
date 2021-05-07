@@ -11,7 +11,7 @@ def start(update, context):
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
         
-📞 Connected {user_info}.
+📞 Новый пользователь начал диалог с Ботом.
         """,
     )
 
