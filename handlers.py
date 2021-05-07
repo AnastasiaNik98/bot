@@ -1,7 +1,8 @@
 import os
+import telobot
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from settings import WELCOME_MESSAGE, TELEGRAM_SUPPORT_CHAT_ID, TELEGRAM_TOKEN
-
+from telebot import types
 
 def start(update, context):
     
@@ -9,19 +10,20 @@ def start(update, context):
     user_info = update.message.from_user.to_dict()
 
     context.bot.send_message(
-	     reply_markup=keyboard(),
         chat_id=TELEGRAM_SUPPORT_CHAT_ID,
         text=f"""
         
 📞 Connected {user_info}.
         """,
     )
-  
-def keyboard():
-	markup = context.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-	btn1 = context.KeyboardButton('Баланс')
-	markup.add(btn1)
-	return markup 
+
+@bot.message_handler(commands=["start"])
+def start(m):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(*[types.KeyboardButton(name) for name in ['О нас', 'Прайс-лист']])
+    keyboard.add(*[types.KeyboardButton(name) for name in ['Акции', 'Контакты']])
+    bot.send_message(m.chat.id, '123',
+        reply_markup=keyboard)
     
 def about(update, context):
     update.message.reply_text('\n С помощью комплексного интернет-маркетинга внедряем эффективные решения, позволяющие достичь максимальных имиджевых и финансовых результатов для Клиентов в России 🇷🇺, странах СНГ 🇵🇬, США 🇺🇸 и Европе 🇪🇺🤝 \n \n При формировании наших решений мы учитываем поставленные перед нами бизнес-задачи, состояние и перспективы развития сайтов, последние технологические разработки алгоритмов поисковых систем 🤖 и тенденции развития интернет-маркетинга 👾🤓')
