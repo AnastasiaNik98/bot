@@ -15,7 +15,6 @@ def start(update, context):
         """,
     )
 
-@bot.message_handler(commands=["start"])
 def start(m):
     keyboard = update.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*[update.KeyboardButton(name) for name in ['О нас', 'Прайс-лист']])
